@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Navbar,NavbarBrand } from 'reactstrap';
+import Header from './HeaderComponent';
+import Footer from './FooterFunction'
 import Menu from './MenuFunction'
+import Home from './HomeComponent'
 import { DISHES } from '../shared/dishes' /*it is not in same dir. so you go one level up. hence '../'*/
 import Detail from './DishDetailFunction'
-
+import { Switch, Route, Redirect } from 'react-router-dom'
 class Main extends Component {
 
   constructor(props)
@@ -23,14 +25,11 @@ class Main extends Component {
   render(){
   return (
     <div>
-      <Navbar dark color="primary">
-        <div className="container">
-         <NavbarBrand href="/">Restoranti Con Fusion </NavbarBrand>
-        </div>
-      </Navbar>
+      <Header/>
       <Menu dishes={this.state.dishes}
         onClick={(dishId) => this.onDishSelect(dishId)}/>
       <Detail dish={this.state.dishes.filter((dish) => dish.id=== this.state.selectedDish)[0]}/>
+      <Footer/>
     </div>
    );
   }
