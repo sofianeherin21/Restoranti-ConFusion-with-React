@@ -1,0 +1,4 @@
+DishDetailComponent is presentational component as it has no local state info
+and solely depends upon the props passed to it
+
+Container component has state props
