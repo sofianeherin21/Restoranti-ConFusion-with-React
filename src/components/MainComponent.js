@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar,NavbarBrand } from 'reactstrap';
-import Menu from './MenuComponent'
+import Menu from './MenuFunction'
 import { DISHES } from '../shared/dishes' /*it is not in same dir. so you go one level up. hence '../'*/
-import Detail from './DishDetailComponent'
+import Detail from './DishDetailFunction'
 
 class Main extends Component {
 
