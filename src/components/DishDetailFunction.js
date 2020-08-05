@@ -1,5 +1,7 @@
 import React from 'react'
-import {Card, CardText,CardBody,CardImg,CardTitle} from 'reactstrap'
+import { Card, CardImg, CardText, CardBody,
+    CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -27,11 +29,11 @@ import {Card, CardText,CardBody,CardImg,CardTitle} from 'reactstrap'
 		}
 	}
 
-	function RenderComment({dish})
+	function RenderComment({comments})
 	{
-		if(dish!=null && dish.comments!=null)
+		if(comments!=null)
 		{
-			const reviews= dish.comments.map((review)=>
+			const reviews= comments.map((review)=>
 			{
 				return(
 					<div key={review.id}>
@@ -63,6 +65,17 @@ import {Card, CardText,CardBody,CardImg,CardTitle} from 'reactstrap'
 		return(
 
 			<div className="container">
+				<div className="row">
+                    <Breadcrumb>
+
+                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.dish.name}</h3>
+                        <hr />
+                    </div>                
+                </div>
 
 				<div className="row">
 					<div className="col-12 col-md-5 m-1">
@@ -70,7 +83,7 @@ import {Card, CardText,CardBody,CardImg,CardTitle} from 'reactstrap'
 					</div>
 					<div className="col-12 col-md-5 m-1">
 
-						<RenderComment dish={props.dish}/>
+						<RenderComment comments={props.comments}/>
 					</div>
 
 				</div>
