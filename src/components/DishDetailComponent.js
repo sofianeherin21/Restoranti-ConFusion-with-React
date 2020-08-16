@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Card, CardText,CardBody,CardImg,CardTitle} from 'reactstrap'
+import React, {Component} from 'react';
+import {Card, CardText,CardBody,CardImg,CardTitle} from 'reactstrap';
 
 
 class Detail extends Component{
