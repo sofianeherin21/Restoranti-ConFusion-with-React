@@ -2,11 +2,11 @@ import React from 'react'
 import { Card, CardImg, CardText, CardBody,
     CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentForm';
 
 
 
-
-	function RenderDish({dish})
+function RenderDish({dish})
 	{
 		console.log('DishDetail component render invoked');
 
@@ -50,6 +50,7 @@ import { Link } from 'react-router-dom';
 				<ul className="list-unstyled">
 					<h4>Comments</h4>
 					{reviews}
+					<CommentForm/>
 				</ul>
 				
 			);
