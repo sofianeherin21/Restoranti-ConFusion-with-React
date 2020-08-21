@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import CommentForm from './CommentForm';
+    CardTitle, Breadcrumb, BreadcrumbItem,Modal, ModalHeader, ModalBody,
+    Form, FormGroup, Input, Label,Row,Col,Button } from 'reactstrap';
+import {Link } from 'react-router-dom';
+import { Control, LocalForm, Errors } from 'react-redux-form';
+import CommentForm from './CommentForm'
 
 
 
@@ -29,7 +31,7 @@ function RenderDish({dish})
 		}
 	}
 
-	function RenderComment({comments})
+	function RenderComment({comments,addComment,dishId})
 	{
 		if(comments!=null)
 		{
@@ -50,7 +52,7 @@ function RenderDish({dish})
 				<ul className="list-unstyled">
 					<h4>Comments</h4>
 					{reviews}
-					<CommentForm/>
+					<CommentForm dishId={dishId} addComment={addComment}/>
 				</ul>
 				
 			);
@@ -84,7 +86,7 @@ function RenderDish({dish})
 					</div>
 					<div className="col-12 col-md-5 m-1">
 
-						<RenderComment comments={props.comments}/>
+						<RenderComment comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
 					</div>
 
 				</div>

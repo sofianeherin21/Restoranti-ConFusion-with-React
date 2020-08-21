@@ -1,5 +1,4 @@
 import React, { Component } from  'react';
-
 import { Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label,Row,Col } from 'reactstrap';
@@ -16,13 +15,13 @@ class CommentForm extends Component{
         
 
         this.state = {
-            name:'',
+            author:'',
             rating:'',
-            message:'',
+            comment:'',
             touched: {
-                name: false,
+                author: false,
                 rating: false,
-                message: false
+                comment: false
               },
 
             isModalOpen: false
@@ -45,16 +44,17 @@ class CommentForm extends Component{
       handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        const author = target.author;
     
         this.setState({
-	          [name]: value
+	          [author]: value
 	        });
 	    }
 
 	  handleSubmit(values) {
 	        console.log('Current State is: ' + JSON.stringify(values));
-	        alert('Current State is: ' + JSON.stringify(values));
+	        
+	        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
 	        // event.preventDefault();
 	    }
 
@@ -64,21 +64,21 @@ class CommentForm extends Component{
 	    });
 	  }
 
-	  validate(name)
+	  validate(author)
 	    {
 	        const errors = {
 
-	            name: ''
+	            author: ''
 
 	        };
 
-	        if(this.state.touched.name && name.length < 2)
+	        if(this.state.touched.author && author.length < 2)
 	        
-	            errors.name = 'name should be >=2 characters';
+	            errors.author = 'name should be >=2 characters';
 	        
-	        else if(this.state.touched.name && name.length > 15)
+	        else if(this.state.touched.author && author.length > 15)
 	        
-	            errors.name = 'name should be <=15 characters';
+	            errors.author = 'name should be <=15 characters';
 	        
 
 	                return errors;
@@ -104,7 +104,7 @@ class CommentForm extends Component{
                              <Row className="form-group">
                                 <Label htmlFor="rating" md={12}>Rating</Label>
                                 <Col md={12}>
-                                    <Control.select model=".rating" id="rating" name="name" className="form-control">
+                                    <Control.select model=".rating" id="rating" name="rating" className="form-control">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -114,9 +114,9 @@ class CommentForm extends Component{
                                 </Col>
                              </Row>
                             <Row className="form-group">
-                                <Label htmlFor="name" md={12}>Your Name</Label>
+                                <Label htmlFor="author" md={12}>Your Name</Label>
                                 <Col md={12}>
-                                    <Control.text model=".name" id="name" name="name"
+                                    <Control.text model=".author" id="author" name="author"
                                         placeholder="Your Name"
                                         className="form-control"
                                         validators={{
@@ -125,7 +125,7 @@ class CommentForm extends Component{
                                          />
                                     <Errors
                                         className="text-danger"
-                                        model=".name"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             required: 'Required',
@@ -136,9 +136,9 @@ class CommentForm extends Component{
                                 </Col>
                             </Row>
                             <Row className="form-group">
-                                <Label htmlFor="message" md={12}>Comment</Label>
+                                <Label htmlFor="comment" md={12}>Comment</Label>
                                 <Col md={12}>
-                                    <Control.textarea model=".message" id="message" name="message"
+                                    <Control.textarea model=".comment" id="comment" name="comment"
                                         rows="6"
                                         className="form-control" />
                                 </Col>
@@ -159,7 +159,6 @@ class CommentForm extends Component{
 			);
 	}
 }
-
 
 
 export default CommentForm;
