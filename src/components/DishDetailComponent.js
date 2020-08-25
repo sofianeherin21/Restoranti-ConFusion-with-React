@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, CardText,CardBody,CardImg,CardTitle} from 'reactstrap';
-
+import { baseUrl } from '../shared/baseUrl';
 
 class Detail extends Component{
 
@@ -22,7 +22,7 @@ class Detail extends Component{
 			return(
 
 				<Card>
-					<CardImg src={dish.image} alt={dish.name}></CardImg>
+					<CardImg top src={baseUrl + dish.image} alt={dish.name} />
 					<CardBody>
 						<CardTitle>{dish.name}</CardTitle>
 						<CardText>{dish.description}</CardText>
