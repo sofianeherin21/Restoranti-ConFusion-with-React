@@ -37,7 +37,7 @@ function RenderDish({dish})
 		}
 	}
 
-	function RenderComment({comments,addComment,dishId})
+	function RenderComment({comments, postComment, dishId})
 	{
 		if(comments!=null)
 		{
@@ -58,7 +58,7 @@ function RenderDish({dish})
 				<ul className="list-unstyled">
 					<h4>Comments</h4>
 					{reviews}
-					<CommentForm dishId={dishId} addComment={addComment}/>
+					<CommentForm dishId={dishId} postComment={postComment}/>
 				</ul>
 				
 			);
@@ -112,7 +112,7 @@ function RenderDish({dish})
 					</div>
 					<div className="col-12 col-md-5 m-1">
 
-						<RenderComment comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
+						<RenderComment comments={props.comments} postComment={props.postComment} dishId={props.dish.id} />
 					</div>
 
 				</div>
